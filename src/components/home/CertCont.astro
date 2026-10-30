@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+
+import secImage from "../../images/certs/aws-sec.png";
+import saImage from "../../images/certs/aws-sa.png";
+import devImage from "../../images/certs/aws-dev.png";
+import cpImage from "../../images/certs/aws-cp.png";
+import az9Image from "../../images/certs/az-900.png";
+---
+
+<div class="badgesContainer">
+  <div class="badge-image-container">
+    <a
+      href="https://www.credly.com/badges/04f9ffae-de7f-4e94-b801-40f72b131c35/public_url"
+      target="_blank"
+    >
+      <Image
+        class="badge-image"
+        src={secImage}
+        alt="AWS Certified Security – Specialty"
+        width="150"
+        height="150"
+      />
+    </a>
+    <span class="badge-image-span">AWS Certified Security – Specialty</span>
+  </div>
+  <div class="badge-image-container">
+    <a
+      href="https://www.credly.com/badges/bce9c6f9-31ec-4f0b-958f-e240706b6764/public_url"
+      target="_blank"
+    >
+      <Image
+        class="badge-image"
+        src={saImage}
+        alt="AWS Certified Solutions Architect – Associate"
+        width="150"
+        height="150"
+      />
+    </a>
+    <span class="badge-image-span"
+      >AWS Certified Solutions Architect – Associate</span
+    >
+  </div>
+  <div class="badge-image-container">
+    <a
+      href="https://www.credly.com/badges/4b0cf510-a764-4cf8-bd70-7e14a1211502/public_url"
+      target="_blank"
+    >
+      <Image
+        class="badge-image"
+        src={devImage}
+        alt="AWS Certified Developer – Associate"
+        width="150"
+        height="150"
+      />
+    </a>
+    <span class="badge-image-span">AWS Certified Developer – Associate</span>
+  </div>
+  <div class="badge-image-container">
+    <a
+      href="https://www.credly.com/badges/3022798f-153b-4df9-85f2-49acb2defcbc/public_url"
+      target="_blank"
+    >
+      <Image
+        class="badge-image"
+        src={cpImage}
+        alt="AWS Certified Cloud Practitioner"
+        width="150"
+        height="150"
+      />
+    </a>
+    <span class="badge-image-span">AWS Certified Cloud Practitioner</span>
+  </div>
+  <div class="badge-image-container">
+    <a
+      href="https://learn.microsoft.com/en-gb/users/simoncull-0799/credentials/c1d3e0f935d6725f?ref=http%3A%2F%2Flocalhost%3A4321%2F"
+      target="_blank"
+    >
+      <Image
+        class="badge-image"
+        src={az9Image}
+        alt="Microsoft Certified: Azure Fundamentals"
+        width="150"
+        height="150"
+      />
+    </a>
+    <span class="badge-image-span">Microsoft Certified: Azure Fundamentals</span
+    >
+  </div>
+</div>
+
+<style>
+  .badgesContainer {
+    padding-top: 10px;
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    align-items: center;
+    justify-items: center;
+  }
+
+  .badge-image-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr auto;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+  }
+
+  img.badge-image {
+    /* height: 150px;
+    width: 150px; */
+  }
+
+  .badge-image-span {
+    text-decoration: none;
+    width: 140px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+</style>

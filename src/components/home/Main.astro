@@ -1,0 +1,26 @@
+---
+import About from './About.astro';
+import Projects from './Projects.astro';
+import Skills from './Skills.astro';
+import Experience from './Experience.astro';
+import Certs from './Certs.astro';
+import Contact from '../Contact.astro';
+---
+
+<div id="home-container-content">
+  <About />
+  <Projects />
+  <Skills />
+  <Experience />
+  <Certs />
+  <!-- <Contact /> -->
+</div>
+
+<style>
+  #home-container-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: var(--spacing);
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+const { pageName } = Astro.props;
+---
+
+<div id="counter-value">
+  <span>Page views:</span>
+  <span id={`page-views-${pageName}`} class="view-counter"></span>
+  <span>Total views:</span>
+  <span id={`total-views-${pageName}`} class="view-counter"></span>
+</div>
+
+<style>
+  #counter-value {
+    justify-content: flex-start;
+    margin-left: max(4%, 20px);
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-auto-rows: auto;
+    text-align: center;
+    gap: 6px;
+  }
+</style>
+
+<script define:vars={{ pageName }}>
+  fetch(
+    `https://z9ni3d6w18.execute-api.eu-west-2.amazonaws.com/views?page=${pageName}`,
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById(`page-views-${pageName}`).textContent =
+        data.pageViews;
+      document.getElementById(`total-views-${pageName}`).textContent =
+        data.totalViews;
+    })
+    .catch((error) => console.error('Failed to load view count:', error));
+</script>

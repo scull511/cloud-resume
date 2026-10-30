@@ -1,0 +1,154 @@
+<div class="certs-section section">
+  <h2>Certifications</h2>
+  <div class="badges-container">
+    <div class="badge-image-container">
+      <a
+        href="https://www.credly.com/badges/04f9ffae-de7f-4e94-b801-40f72b131c35/public_url"
+        target="_blank"
+      >
+        <img
+          class="badge-image"
+          src="/images/certs/aws-sec.png"
+          alt="AWS Certified Security – Specialty"
+        />
+        <div class="badge-image-text">
+          <div class="cert-span">AWS Certified</div>
+          <div class="cert-title-span">Security</div>
+          <div class="cert-level-span">Specialty</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="badge-image-container">
+      <a
+        href="https://www.credly.com/badges/bce9c6f9-31ec-4f0b-958f-e240706b6764/public_url"
+        target="_blank"
+      >
+        <img
+          class="badge-image"
+          src="/images/certs/aws-sa.png"
+          alt="AWS Certified Solutions Architect – Associate"
+        />
+        <div class="badge-image-text">
+          <div class="cert-span">AWS Certified</div>
+          <div class="cert-title-span">Solutions Architect</div>
+          <div class="cert-level-span">Associate</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="badge-image-container">
+      <a
+        href="https://www.credly.com/badges/4b0cf510-a764-4cf8-bd70-7e14a1211502/public_url"
+        target="_blank"
+      >
+        <img
+          class="badge-image"
+          src="/images/certs/aws-dev.png"
+          alt="AWS Certified Developer – Associate"
+        />
+        <div class="badge-image-text">
+          <div class="cert-span">AWS Certified</div>
+          <div class="cert-title-span">Developer</div>
+          <div class="cert-level-span">Associate</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="badge-image-container">
+      <a
+        href="https://www.credly.com/badges/3022798f-153b-4df9-85f2-49acb2defcbc/public_url"
+        target="_blank"
+      >
+        <img
+          class="badge-image"
+          src="/images/certs/aws-cp.png"
+          alt="AWS Certified Cloud Practitioner"
+        />
+        <div class="badge-image-text">
+          <div class="cert-span">AWS Certified</div>
+          <div class="cert-title-span">Cloud Practitioner</div>
+          <div class="cert-level-span">Foundational</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="badge-image-container">
+      <a
+        href="https://learn.microsoft.com/en-gb/users/simoncull-0799/credentials/c1d3e0f935d6725f?ref=http%3A%2F%2Flocalhost%3A4321%2F"
+        target="_blank"
+      >
+        <img
+          class="badge-image"
+          src="/images/certs/az-900.png"
+          alt="Microsoft Certified: Azure Fundamentals"
+        />
+        <div class="badge-image-text">
+          <div class="cert-span">Microsoft Certified</div>
+          <div class="cert-title-span">Azure</div>
+          <div class="cert-level-span">Fundamentals</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .certs-section {
+    grid-row: 5;
+    grid-column: 1;
+    border-bottom: 1px solid var(--body);
+  }
+
+  .badges-container {
+    padding-top: 10px;
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    align-items: center;
+    justify-items: center;
+  }
+
+  .badge-image-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-content: center;
+    /* height: 100%; */
+    /* width: auto; */
+    max-width: 150px;
+    text-align: center;
+  }
+
+  .badge-image {
+    height: auto;
+    width: 100%;
+    /* max-width: 150px; */
+    object-fit: cover;
+  }
+
+  .badge-image-text {
+    color: #000;
+    text-align: center;
+    display: grid;
+    grid-template-rows: auto auto auto;
+  }
+
+  .badge-image-container a {
+  }
+
+  .badge-image-text .cert-span {
+    font-size: 0.6rem;
+  }
+
+  .badge-image-text .cert-title-span {
+    /* text-decoration: none; */
+    font-size: 1rem;
+  }
+
+  .badge-image-text .cert-level-span {
+    font-size: 0.8rem;
+  }
+</style>

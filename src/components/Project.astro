@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { project } = Astro.props;
+
+interface Props {
+  project: CollectionEntry<"project">;
+}
+---
+
+<a href=`/projects/${project.slug}` data-astro-prefetch>
+  <div class="project">
+    <span class="projectTitle">{project.data.title}</span>
+    <span class="projectServices">
+      {project.data.services}
+    </span>
+  </div>
+</a>
+
+<style>
+  .project {
+    padding: 25px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--project);
+    color: #fff;
+    border-radius: var(--bRad);
+    text-align: center;
+    height: 75px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* box-shadow:
+      0 8px 12px rgba(0, 0, 0, 0.2),
+      0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s; */
+  }
+
+  /* .project:hover {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+  } */
+
+  a {
+    text-decoration: none;
+  }
+
+  .projectTitle {
+    font-size: 1rem;
+  }
+
+  .projectServices {
+    font-size: 0.7rem;
+    color: #bbb;
+    line-height: 1rem;
+  }
+</style>

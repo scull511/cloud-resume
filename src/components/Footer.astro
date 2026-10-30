@@ -1,0 +1,86 @@
+---
+import ViewCounter from './ViewCounter.astro';
+
+const { pageName } = Astro.props;
+---
+
+<footer>
+  <ViewCounter pageName={pageName} />
+  <div id="name-and-year">
+    <span>Simon Cull</span>
+    <span>{new Date().getFullYear()}</span>
+  </div>
+  <div id="social-icons">
+    <a href="">
+      <img
+        src="../icons/github.png"
+        ;
+        alt="GitHub Icon"
+        style="margin-right: 20px; border: none;"
+      />
+    </a>
+    <a href="https:/www.linkedin.com/in/simon-cull-78a27a2b6">
+      <img
+        src="../icons/linkedin.png"
+        ;
+        alt="GitHub Icon"
+        style="border: none"
+      />
+    </a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    width: 100%;
+    height: auto;
+    padding: 35px 0;
+    /* padding: var(--padding); */
+    background-color: var(--footer);
+    color: var(--lightText);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row: auto;
+  }
+
+  footer div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* footer div:nth-of-type(1) {
+    justify-content: flex-start;
+    margin-left: max(4%, 20px);
+    display: grid;
+    grid-auto-rows: auto auto;
+    text-align: center;
+    gap: 2px;
+  } */
+
+  footer div:nth-of-type(2) {
+    justify-content: center;
+    display: grid;
+    grid-auto-rows: auto auto;
+    text-align: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  footer div:nth-of-type(3) {
+    justify-content: flex-end;
+    margin-right: max(4%, 20px);
+  }
+
+  #social-icons {
+    height: 100%;
+  }
+
+  #social-icons img {
+    cursor: pointer;
+    height: 100%;
+    /* margin: 20px; */
+    width: 30px;
+    height: 30px;
+  }
+</style>

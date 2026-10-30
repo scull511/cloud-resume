@@ -1,0 +1,49 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getEntry } from 'astro:content';
+import '../../styles/projects.css';
+
+// const { slug } = Astro.params;
+
+// if (slug === undefined) {
+//   throw new Error("Slug is required");
+// }
+
+// const entry = await getEntry("project", slug);
+
+// if (entry === undefined) {
+//   return Astro.redirect("/404");
+// }
+
+// const { Content } = await entry.render();
+
+// STATIC RENDERING
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+export async function getStaticPaths() {
+  const allProjects: CollectionEntry<'project'>[] =
+    await getCollection('project');
+
+  return allProjects.map((entry) => ({
+    params: {
+      slug: entry.slug,
+    },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// STATIC - need to get all of the projects, loop through and create all of the paths.
+// SSR - get a single project and the paths are then created automatically
+// console.log(entry);
+---
+
+<MainLayout pageName={entry.data.projectID}>
+  <div id="project-container">
+    <div id="project-container-content">
+      <Content />
+    </div>
+  </div>
+</MainLayout>

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "AWS Certified Security – Specialty",
+    "image_url": "aws-sec.png",
+    "cert_url": "https://www.credly.com/badges/04f9ffae-de7f-4e94-b801-40f72b131c35/public_url"
+  },
+  {
+    "name": "AWS Certified Solutions Architect – Associate",
+    "image_url": "aws-sa.png",
+    "cert_url": "https://www.credly.com/badges/bce9c6f9-31ec-4f0b-958f-e240706b6764/public_url"
+  },
+  {
+    "name": "AWS Certified Developer – Associate",
+    "image_url": "aws-dev.png",
+    "cert_url": "https://www.credly.com/badges/4b0cf510-a764-4cf8-bd70-7e14a1211502/public_url"
+  },
+  {
+    "name": "AWS Certified Cloud Practitioner",
+    "image_url": "aws-cp.png",
+    "cert_url": "https://www.credly.com/badges/3022798f-153b-4df9-85f2-49acb2defcbc/public_url"
+  },
+  {
+    "name": "Microsoft Certified: Azure Fundamentals",
+    "image_url": "az-900.png",
+    "cert_url": "https://learn.microsoft.com/en-gb/users/simoncull-0799/credentials/c1d3e0f935d6725f?ref=http%3A%2F%2Flocalhost%3A4321%2F"
+  }
+]

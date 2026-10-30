@@ -1,0 +1,26 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout pageName="home">
+  <div class="section">
+    <div class="title-btn-row">
+      <h2>ERROR</h2>
+      <p>Sorry, that page does not exist</p>
+      <span>
+        <a href="/" class="btn">Home</a>
+        <a href="/projects" class="btn">Projects</a>
+      </span>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .title-btn-row {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    justify-content: flex-start;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,207 @@
+---
+
+---
+
+<div class="contact-section section">
+  <h2>Contact</h2>
+  <form id="contact-form">
+    <div class="form-field" id="form-name">
+      <div id="name-cont">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+    </div>
+
+    <div class="form-field" id="form-email">
+      <div id="email-cont">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+    </div>
+
+    <div class="form-field" id="form-subject">
+      <div id="subject-cont">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required />
+      </div>
+    </div>
+
+    <div class="form-field" id="form-message">
+      <div id="message-cont">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+    <span id="form-confirmation-msg"></span>
+  </form>
+</div>
+
+<style>
+  .contact-section {
+    grid-row: 6;
+    grid-column: 1;
+  }
+
+  /* CONTACT FORM */
+  #contact-form {
+    width: auto;
+    max-width: 500px;
+    display: grid;
+    gap: 10px;
+  }
+
+  label {
+    text-align: left;
+  }
+
+  #form-confirmation-msg {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  input,
+  textarea {
+    background-color: #f4f4f4;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 2.5px;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border: 1px solid #000;
+  }
+
+  input,
+  textarea,
+  button {
+    padding: 10px;
+    font-size: 1.2rem;
+    max-width: 100%;
+    border: 1px solid var(--borderColor);
+    border-radius: 0px;
+  }
+
+  .form-field {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+
+  .form-field div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: #eee;
+    background-color: #265077;
+    background-color: #202830;
+    padding: 20px;
+    color: #fff;
+  }
+
+  button:hover {
+    background-color: #ddd;
+    border: 1px solid #000;
+    color: var(--text);
+  }
+</style>
+
+<script>
+  // CONTACT FORM
+  // let formConfirmationMsg = document.getElementById("form-confirmation-msg");
+
+  document
+    .getElementById("contact-form")!
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Validate form inputs
+      var name = (
+        document.getElementById("name") as HTMLInputElement | null
+      )?.value.trim();
+      var email = (
+        document.getElementById("email") as HTMLInputElement | null
+      )?.value.trim();
+      var subject = (
+        document.getElementById("subject") as HTMLInputElement | null
+      )?.value.trim();
+      var message = (
+        document.getElementById("message") as HTMLInputElement | null
+      )?.value.trim();
+
+      // Email validation using a regular expression
+      var emailRegex = /^\S+@\S+\.\S+$/;
+      if (!name || !email || !subject || !message || !emailRegex.test(email)) {
+        alert("Please fill in all fields with valid inputs.");
+        return;
+      }
+
+      // Construct the form data
+      var formData = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+      };
+
+      // Perform form submission
+      submitForm(formData);
+      // console.log(formData);
+    });
+
+  function submitForm(formData: any) {
+    // Make an API request to the backend (API Gateway) for form submission
+    // fetch("", {
+    // URL that represents the backend API endpoint to which the form data is going to be sent
+    // Make an API request to the backend (Lambda) for form submission
+    fetch(
+      "https://ax7fgzkp2jdposjirdpjrtszky0flahn.lambda-url.eu-west-2.on.aws/",
+      {
+        // URL that represents the backend Lambda URL to which the form data is going to be sent
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    ).then(function (response) {
+      if (response.ok) {
+        // Redirect to the thank you page
+        // window.location.href = "thank-you.html";
+        alert("The message was delivered, thank you.");
+        // formConfirmationMsg.innerText = "Message delivered, thank you.";
+        // setTimeout(function () {
+        //   formConfirmationMsg.innerText = "";
+        // }, 3000);
+      } else {
+        alert("Sorry, the message failed to deliver.");
+      }
+    });
+    // .catch(function (error) {
+    //   console.error(error);
+    //   // alert("Form submission failed. Please try again later.");
+    //   formConfirmationMsg.innerText =
+    //     "Form submission failed. Please try again later.";
+    //   setTimeout(function () {
+    //     formConfirmationMsg.innerText = "";
+    //   }, 3000);
+    // });
+
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+
+    form?.reset();
+  }
+</script>

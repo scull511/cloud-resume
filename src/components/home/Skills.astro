@@ -1,0 +1,94 @@
+<div class="skills-section section">
+  <h2>Technical Skills</h2>
+  <div id="skills-container">
+    <div class="skills-collection">
+      <span class="skills-list-title"> Cloud Computing: </span>
+
+      <ul style="margin-bottom: 0">
+        <span style="margin-left: -20px"
+          >Designing, implementing and managing:</span
+        >
+        <li>
+          Secure, scalable and resilient AWS infrastructures utilising VPC, EC2,
+          Auto Scaling and Load Balancing;
+        </li>
+        <li>
+          High-performing, reliable database solutions on AWS using RDS and
+          DynamoDB ensuring data security;
+        </li>
+        <li>
+          Event-driven serverless applications using Lambda, API Gateway, S3,
+          SQS, SNS and EventBridge;
+        </li>
+        <li>
+          High-availability, low-latency content delivery with Route 53 and
+          CloudFront for website performance.
+        </li>
+      </ul>
+
+      <ul style="margin-bottom: 0">
+        <span style="margin-left: -20px"> AWS security services: </span>
+        <li>WAF and GuardDuty for protection and threat detection.</li>
+        <li>IAM for access control.</li>
+        <li>CloudTrail for logging, to monitor account activity.</li>
+      </ul>
+
+      <span style="margin-top: 16px"
+        >Infrastructure as Code: Terraform and CloudFormation.</span
+      >
+      <span>CI/CD: GitHub Actions.</span>
+      <span>Boto3 AWS SDK for Python.</span>
+    </div>
+
+    <div class="skills-collection">
+      <span class="skills-list-title"> Programming and Development: </span>
+      <ul>
+        <li>HTML, CSS, Tailwind, JavaScript, React, Next, Astro</li>
+        <li>PHP, Node, Express</li>
+        <li>MySQL, MongoDB</li>
+      </ul>
+    </div>
+    <div class="skills-collection">
+      <span class="skills-list-title"> Scripting & Programming: </span>
+      <ul>
+        <li>
+          JavaScript, TypeScript, Python. Linux CLI, AWS CLI for cloud-based
+          operations.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .skills-section {
+      grid-row: 3;
+      grid-column: 1;
+      border-bottom: 1px solid var(--body);
+    }
+
+    #skills-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      gap: 10px;
+    }
+
+    .skills-collection {
+      display: grid;
+      grid-auto-rows: auto;
+    }
+
+    .skills-list-title {
+      font-size: 1.25rem;
+      font-weight: 400;
+      /* padding: 10px 0 5px 0; */
+      padding-top: 15px;
+    }
+
+    .skills-collection ul {
+      display: grid;
+      grid-auto-rows: auto;
+      padding-left: 20px;
+    }
+  </style>
+</div>
