@@ -1,48 +1,65 @@
-# Astro Starter Kit: Basics
+# cloud-resume
 
-```sh
-npm create astro@latest -- --template basics
+The source for my online CV and project portfolio, live at
+[cv.simoncull.co.uk](https://cv.simoncull.co.uk). It is a static site built with
+[Astro](https://astro.build) and part of my take on the
+[Cloud Resume Challenge](https://cloudresumechallenge.dev).
+
+The AWS infrastructure that hosts it (S3, CloudFront, Route 53, the visitor-counter API and
+database) lives in a separate repo:
+**[cloud-resume-infra](https://github.com/scull511/cloud-resume-infra)**.
+
+## What's in this repo
+
+- Astro pages, layouts and components (`src/pages`, `src/layouts`, `src/components`)
+- Project write-ups, written as Markdown files in a content collection (`src/content/project`)
+- Styles, icons and images (`src/styles`, `src/icons`, `src/images`, `public`)
+
+The build output (`dist/`) isn't committed. It is generated from the source.
+
+## Running it locally
+
+```bash
+npm ci
+npm run dev       # local dev server at http://localhost:4321
+npm run build     # builds the static site into dist/
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## How it's deployed
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The built `dist/` folder is synced to a private S3 bucket, served through CloudFront, and the
+CloudFront cache is invalidated so changes show up straight away. This is currently done by hand:
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+aws s3 sync dist/ s3://cv.simoncull.co.uk --delete
+aws cloudfront create-invalidation --distribution-id E3EWJ4U4IM6KCQ --paths "/*"
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Automating this with GitHub Actions is the next step.
 
-## 🧞 Commands
+## The view counter
 
-All commands are run from the root of the project, from a terminal:
+Each page shows a view count for that page and a site-wide total. The `ViewCounter` component
+calls an API (API Gateway → Lambda → DynamoDB) when the page loads, passing a page name.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Standalone pages pass a fixed name through `MainLayout`, e.g. `pageName="home"`.
+- Each project Markdown file has a `projectID` in its frontmatter (starting `pr-`), which is used as
+  its page name.
+- The Lambda only accepts known page names and valid project IDs, so a new standalone page also
+  needs adding to the allowlist in the infra repo.
 
-## 👀 Want to learn more?
+## Adding a project
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Create a new Markdown file in `src/content/project/` with this frontmatter:
+
+```markdown
+---
+title: 'Project title'
+slug: project-slug
+projectID: 'pr-project-slug'
+homepage: true
+visible: true
+services: 'AWS - Service, Service'
+---
+```
